@@ -1,0 +1,39 @@
+module:
+  name: "Chip"
+  description: "Top-level of design"
+  parameters:
+    - name:        address width
+      description: "AHB Address Width in Bits"
+      value: 8
+    - name: data_width
+      description: "AHB Data Width in Bits"
+      value: 32
+    
+    interfaces:
+      - name: clk
+        description: "System Clock"
+        bit_width: 1
+        type: port
+        direction: input
+
+      - name: reset
+        description: "System Reset"
+        bit_width: 1
+        type: port
+        direction: input
+      
+      - name: apb
+        description: "APB Initiator"
+        type: port
+        direction: initiator
+        reference: apb_if
+        parameters:
+          - name: data_width
+            value: data_width
+          - name: address_width
+            value: address_width - 2
+      
+      instances:
+        - 
+        
+    
