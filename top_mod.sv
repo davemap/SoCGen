@@ -10,7 +10,7 @@ module top_mod
     logic c; // Wire c;
 
     a_module a_mod (
-        .clk (clk [0]),
+        .clk ({clk [1:0], rst}),
         .rst (),
         );
 

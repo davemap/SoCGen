@@ -41,3 +41,9 @@ class Connection:
     def connection_declr(self):
         if len(self.interfaces) == 1:
             return f"{self.interface_inst[0].name}{self.interface_bitslice_string[0]}"
+        else:
+            connection_string = "{"
+            for if_idx, interface in enumerate(self.interfaces):
+                connection_string += f"{self.interface_inst[if_idx].name}{self.interface_bitslice_string[if_idx]}, "
+            connection_string = connection_string[:-2] + "}"
+            return connection_string
