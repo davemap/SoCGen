@@ -48,7 +48,7 @@ def test():
         ],
         connections = [
             Connection([(clk_inst,)], ConnectPort.INPUT),
-            Connection([(clk_inst,(0,1)),(rst_inst,)], clk_inst, sub_module = a_mod_inst),
+            Connection([(clk_inst,(2,2)),(clk_inst,(1,0))], clk_inst, sub_module = a_mod_inst),
             Connection([(rst_inst,)], ConnectPort.INPUT),
             Connection([(apb_inst,"slave")], ConnectPort.SV_IF)
         ]

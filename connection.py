@@ -16,13 +16,15 @@ class Connection:
         self.interface_modport = []
         for interface in interfaces:
             if interface[0].interface_type == InterfaceType.LOGIC:
-                self.interface_bits.append(list(range(interface[0].bit_width)) if len(interface) == 1 else list(range(interface[1][0],interface[1][1]+1)))
+                self.interface_bits.append(list(range(interface[0].bit_width)) if len(interface) == 1 else list(range(interface[1][1],interface[1][0]+1)))
             elif interface[0].interface_type == InterfaceType.SVINTERFACE:
                 self.interface_modport.append(interface[1] if len(interface) > 1 else "")
     
     @property
     def interface_width(self):
-        return [len(self.interface_bits) for interface in self.interface_bits]
+        interface_width_list = [len(interface) for interface in self.interface_bits]
+        print(interface_width_list)
+        return interface_width_list
     
     @property
     def interface_bitslice_string(self):
@@ -30,6 +32,7 @@ class Connection:
         for if_idx, interface_width in enumerate(self.interface_width):
             sub_if_string = ""
             if interface_width < self.interface_inst[if_idx].bit_width:
+                print(interface_width)
                 if interface_width == 1:
                     sub_if_string = f" [{self.interface_bits[if_idx][0]}]"
                 else:
