@@ -9,3 +9,6 @@ Features that will be added:
 - Register/Address Map Generation
 - C Header File generation
 - Updating of Yaml files by parsing existing RTL
+- I/O Pad Generation
+- Custom Backend Support
+- Connection/Interface Linting and Checking
