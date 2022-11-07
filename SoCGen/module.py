@@ -82,7 +82,7 @@ def createBaseModule   (module_name,
                         size = 0x0,
                         parameters = [],
                         include_files = [],
-                        templates = [],
+                        templates = ["Templates/SystemVerilog/module.sv.tpl"],
                         sub_modules = [],
                         interfaces = [],
                         connections = []):

@@ -1,4 +1,6 @@
-import SoCGen.module as module, SoCGen.interface as interface, SoCGen.parameter as parameter
+import sys
+sys.path.append(".")
+
 from SoCGen.module import *
 from SoCGen.interface import *
 from SoCGen.parameter import *
@@ -59,7 +61,7 @@ def test():
     top_mod = BaseTopModule("top_mod", "Top-Level Module Instance")
     
     # Generate an SV file from Top-level Module Instance
-    gen_mako_sv(top_mod, ".")
+    gen_mako_sv(top_mod, "Test")
 
 if __name__ == "__main__":
     test()

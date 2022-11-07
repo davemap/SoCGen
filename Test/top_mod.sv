@@ -11,7 +11,7 @@ module top_mod
     logic c; // Wire c;
 
     a_module a_mod (
-        .clk ({clk [2:1], clk [1:0]}),
+        .clk ({clk [2], clk [1:0]}),
         .rst (),
         );
 

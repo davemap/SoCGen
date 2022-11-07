@@ -1,3 +1,5 @@
+# This file doesn't currently do anything and is just an example of the format
+# that I wish to use
 module:
   name: "Chip"
   description: "Top-level of design"
