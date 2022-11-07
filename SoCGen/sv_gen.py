@@ -1,7 +1,7 @@
-import module, interface, parameter
-from module import *
-from interface import *
-from parameter import *
+import SoCGen.module as module, SoCGen.interface as interface, SoCGen.parameter as parameter
+from SoCGen.module import *
+from SoCGen.interface import *
+from SoCGen.parameter import *
 from pprint import pprint
 from mako.template import Template
 

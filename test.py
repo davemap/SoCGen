@@ -1,9 +1,9 @@
-import module, interface, parameter
-from module import *
-from interface import *
-from parameter import *
-from sv_gen import *
-from connection import *
+import SoCGen.module as module, SoCGen.interface as interface, SoCGen.parameter as parameter
+from SoCGen.module import *
+from SoCGen.interface import *
+from SoCGen.parameter import *
+from SoCGen.sv_gen import *
+from SoCGen.connection import *
 from pprint import pprint
 
 def test():
@@ -17,6 +17,7 @@ def test():
     clk_inst = BaseClkIf("clk", "Clock Input")
     rst_inst = BaseRstIf("rst", "Reset Input")
     apb_inst = BaseApbIf("apb", "Apb Interface")
+    apb2_inst = BaseApbIf("apb2", "Apb Interface")
     wire_a_inst = BaseWireIf("a", "Wire a")
     wire_b_inst = BaseWireIf("b", "Wire b")
     wire_c_inst = BaseWireIf("c", "Wire c")
@@ -39,7 +40,7 @@ def test():
     # Create a Base Top Module Class which can be instanced to generate an SV file
     BaseTopModule = createBaseModule("top_module",
         interfaces = [
-            clk_inst, rst_inst, apb_inst,
+            clk_inst, rst_inst, apb_inst, apb2_inst,
             wire_a_inst, wire_b_inst, wire_c_inst
         ],
         sub_modules = [

@@ -1,4 +1,4 @@
-from interface import *
+from SoCGen.interface import *
 
 class ConnectPort(Enum):
     INPUT   = auto() # Input Port
@@ -23,7 +23,6 @@ class Connection:
     @property
     def interface_width(self):
         interface_width_list = [len(interface) for interface in self.interface_bits]
-        print(interface_width_list)
         return interface_width_list
     
     @property
@@ -32,7 +31,6 @@ class Connection:
         for if_idx, interface_width in enumerate(self.interface_width):
             sub_if_string = ""
             if interface_width < self.interface_inst[if_idx].bit_width:
-                print(interface_width)
                 if interface_width == 1:
                     sub_if_string = f" [{self.interface_bits[if_idx][0]}]"
                 else:

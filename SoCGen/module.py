@@ -1,4 +1,4 @@
-from connection import ConnectPort
+from SoCGen.connection import ConnectPort
 from enum import Enum, auto
 
 class ModuleType(Enum):
