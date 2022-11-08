@@ -2,50 +2,51 @@ module:
     name: top_mod # Name of the Module Class and Instance Name if Top-Module
     description: "Top-Level Module Instance" # Module Class Description
     
-    interfaces: # List of Interfaces Required in Module
-      - name: clk # Interface Name
-        description: "Clock Input" # Interface Description
-        interface: clk_if # Interface Inheritance
-                          # If no Inheritance is given, uses Logic Class
+    nets: # List of Nets (wires) required in Module
+          # If a Net isn't connected to a port, it will be declared as a wire.
+      - name: clk # Net Name
+        description: "Clock Input" # Net Description
+        net: clk_if # Net Inheritance
+                    # If no Inheritance is given, uses Wire Class
       
       - name: rst
         description: "Reset Input"
-        interface =: rst_if
+        net: rst_if
       
     sub-modules: # List of Instatiated Modules within this Module
       - name: a_mod_inst # Sub-module Instance Name
         description: "Sub-Module A Instance" # Instance Description
         module: a_mod # Sub-module Instance Class
     
-    connections: # List of Internal Connections to Instances and Ports
+    connections: # List of Internal Connections to Module Instances and Ports
       - name: input_clk_connect
         description: "declares clk as input"
-        interfaces:
-          - interface: clk
-        connect:
+        sources:
+          - net: clk
+        point:
           - module: this # If value isn't given, "this" should be default value
             port:   input
       
       - name: input_rst_connect
         description: "declares rst as input"
-        interfaces:
-          - interface: rst
-        connect:
+        sources:
+          - net: rst
+        point:
           - module: this # If value isn't given, "this" should be default value
             port:   input
 
       - name: a_mod_inst_clk_connect # This doesn't need to be explicit and can be derived
         description: "Connects a_mod_inst clk to input clk" # This can be derived if needed
-        interfaces: # List of Interfaces to Connect to sub-module port
-          - interface: clk
+        sources: # List of Interfaces to Connect to sub-module port
+          - net: clk
             bits:
               upper: 2
               lower: 2
-          - interface: clk
+          - net: clk
             bits:
               upper: 1
               lower: 0   
-        connect: # Port of sub-module to connect to
+        point: # Port of sub-module to connect to
           module: a_mod_inst
           port:   clk
             
