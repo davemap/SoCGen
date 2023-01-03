@@ -4,3 +4,4 @@ from SoCGen.module import *
 from SoCGen.parameter import *
 from Test.test import *
 from SoCGen.sv_gen import *
+from SoCGen.parser import *
